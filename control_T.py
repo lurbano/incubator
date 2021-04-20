@@ -3,9 +3,9 @@ import time
 
 import RPi.GPIO as gpio
 gpio.setmode(gpio.BCM)
-gpio.setup(relayPin, gpio.OUT)
 
 relayPin = 26
+gpio.setup(relayPin, gpio.OUT)
 
 sT = sensor_T(None)
 T = sT.read()
