@@ -23,6 +23,7 @@ status = {
     'minT': 99.5,
     'dt': 5,
     'log_dt': 60,
+    'post_dt': 300,
     'start_t': time.time()
 }
 
@@ -50,12 +51,13 @@ while True:
 
 
     # write data to file
-    run_t = time.time() - status["start_t"]
+    run_t = round(time.time() - status["start_t"], 2)
     log_n = int(run_t / status["log_dt"])
 
     if log_n > last_log:
+        now = time.time()
         with open(dataFile, "a") as df:
-            df.write(f'{run_t},{T},{l_on}')
+            df.write(f'{now},{run_t},{T},{l_on}\n')
 
         last_log = log_n
 
