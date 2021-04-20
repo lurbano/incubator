@@ -19,11 +19,11 @@ statusFile = "status.log"
 dataFile = "data.log"
 
 status = {
-    maxT: 100,
-    minT: 99.5,
-    dt: 5,
-    log_dt: 60,
-    start_t: time.time()
+    'maxT': 100,
+    'minT': 99.5,
+    'dt': 5,
+    'log_dt': 60,
+    'start_t': time.time()
 }
 
 # data = {
