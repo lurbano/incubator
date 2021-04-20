@@ -23,14 +23,14 @@ status = {
     minT: 99.5,
     dt: 5,
     log_dt: 60,
-    start_t = time.time()
+    start_t: time.time()
 }
 
-data = {
-    t: [],
-    T: [],
-    on: []
-}
+# data = {
+#     t: [],
+#     T: [],
+#     on: []
+# }
 
 last_log = -1
 
