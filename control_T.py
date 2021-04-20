@@ -76,6 +76,7 @@ while True:
         }
         x = requests.post(logSite, data=Tdata)
         print(x.text)
+        last_post = post_n
 
 
 
