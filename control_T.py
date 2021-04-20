@@ -1,5 +1,6 @@
 from sensor_T import *
 import time
+import requests
 
 import RPi.GPIO as gpio
 gpio.setmode(gpio.BCM)
@@ -18,6 +19,8 @@ time.sleep(2)
 statusFile = "status.log"
 dataFile = "data.log"
 
+logSite = "https://soriki.com/incubator/log.php"
+
 status = {
     'maxT': 100,
     'minT': 99.5,
@@ -34,6 +37,7 @@ status = {
 # }
 
 last_log = -1
+last_post = -1
 
 while True:
     T = sT.read()
@@ -60,6 +64,19 @@ while True:
             df.write(f'{now},{run_t},{T},{l_on}\n')
 
         last_log = log_n
+
+    # post data to soriki
+    post_n = int(run_t/status["post_dt"])
+    if post_n > last_post:
+        now = time.time()
+        Tdata = {
+            "time": now,
+            "T": T,
+            "on": l_on
+        }
+        x = requests.post(logSite, data=Tdata)
+        print(x.text)
+
 
 
     time.sleep(status["dt"])
