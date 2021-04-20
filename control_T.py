@@ -42,7 +42,7 @@ last_post = -1
 while True:
     T = sT.read()
     TF = (T *9/5)+32
-    print(T, TF, TF > 99.5)
+    print(T, TF, l_on)
 
     if (TF < 99.5):
         #print("less than 99.5")
